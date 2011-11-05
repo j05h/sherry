@@ -1,5 +1,11 @@
+%h2 WTF?
+
+%p
+  Use Sherry to easily share links between devices. Bookmark a link on one device, load that link on the other with one click.
+
 %h2 Create your account or login
 
 %form{:action => '/users', :method => 'post'}
+  %input{:name => 'name'}
   %input{:type => 'submit', :value => 'Create a New User'}
 
