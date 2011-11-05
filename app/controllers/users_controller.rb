@@ -14,4 +14,10 @@ class UsersController < ApplicationController
     cookies[:user] = params[:id]
     @user = User.find_by_name params[:id]
   end
+
+  def share
+    logger.info "#{params[:id]} logged #{params[:l]}"
+
+    render :text => 'Awesome!'
+  end
 end

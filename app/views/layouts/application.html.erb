@@ -52,7 +52,15 @@
             <%= yield %>
           </div>
           <div class="span4">
-            <h3><%= yield :sideline %></h3>
+            <% if @user %>
+              <h3>Your Share Link</h3>
+              <p>
+                Drag this link to your browser
+              </p>
+              <p>
+              <a href="javascript:(function(){b='<%=share_url(@user.name)%>';l=document.location;t=b+'?l='+l;alert(t);})();">Sherry Link</a>
+              </p>
+            <% end %>
           </div>
         </div>
       </div>
