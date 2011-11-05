@@ -16,62 +16,49 @@
   <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <style>
+    .container-fluid { min-width: 120px; }
+  </style>
   </head>
 
   <body>
-
     <div class="topbar">
       <div class="fill">
-        <div class="container">
+        <div class="container-fluid">
           <a class="brand" href="#">Sherry</a>
 
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#links">Links</a></li>
+            <li class="active"><a href="#marks">Bookmarks</a></li>
           </ul>
-          <form action="" class="pull-right">
-            <input class="input-small" type="text" placeholder="Username">
-
-            <input class="input-small" type="password" placeholder="Password">
-            <button class="btn" type="submit">Sign in</button>
-          </form>
         </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
+        <div class="page-header"> </div>
+        <div class="container-fluid">
+          <%= yield %>
+          <% if @user %>
+            <a name="marks"></a>
+            <h3>Your Share Link</h3>
+            <p>
+              Drag this link to your browser. Click it to share your current page.
+            </p>
+            <p>
+            <a href="javascript:(function(){b='<%=share_url(@user.name)%>';window.open(b+'?l='+document.location,'sherry','location=0,status=0,scrollbars=0,width=100,height=100');})();">Sherry Link</a>
+            </p>
+            <h3>Your Go Link</h3>
+            <p>
+              Drag this link to your browser. Click it to go to the last page you shared.
+            </p>
+            <p>
+            <a href="<%=link_path @user.name%>">Go!</a>
+            </p>
 
-      <div class="content">
-        <div class="page-header">
-          <h1><%= yield :page_name %><small><%= yield :tag_line %></small></h1>
+          <% end %>
         </div>
-        <div class="row">
-          <div class="span10">
-            <h2><%= yield :headline %></h2>
-            <%= yield %>
-          </div>
-          <div class="span4">
-            <% if @user %>
-              <h3>Your Share Link</h3>
-              <p>
-                Drag this link to your browser. Click it to share your current page.
-              </p>
-              <p>
-              <a href="javascript:(function(){b='<%=share_url(@user.name)%>';window.open(b+'?l='+document.location,'sherry','location=0,status=0,scrollbars=0,width=100,height=100');})();">Sherry Link</a>
-              </p>
-              <h3>Your Go Link</h3>
-              <p>
-                Drag this link to your browser. Click it to go to the last page you shared.
-              </p>
-              <p>
-              <a href="<%=link_path @user.name%>">Go!</a>
-              </p>
-
-            <% end %>
-          </div>
-        </div>
-      </div>
 
       <footer>
         <p>&copy; joshndewey 2011</p>
