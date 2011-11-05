@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(:version => 20111105185709) do
 
   create_table "links", :force => true do |t|
+    t.string   "url"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
