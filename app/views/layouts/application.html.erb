@@ -55,11 +55,19 @@
             <% if @user %>
               <h3>Your Share Link</h3>
               <p>
-                Drag this link to your browser
+                Drag this link to your browser. Click it to share your current page.
               </p>
               <p>
-              <a href="javascript:(function(){b='<%=share_url(@user.name)%>';l=document.location;t=b+'?l='+l;alert(t);})();">Sherry Link</a>
+              <a href="javascript:(function(){b='<%=share_url(@user.name)%>';window.open(b+'?l='+document.location,'sherry','location=0,status=0,scrollbars=0,width=100,height=100');})();">Sherry Link</a>
               </p>
+              <h3>Your Go Link</h3>
+              <p>
+                Drag this link to your browser. Click it to go to the last page you shared.
+              </p>
+              <p>
+              <a href="<%=link_path @user.name%>">Go!</a>
+              </p>
+
             <% end %>
           </div>
         </div>

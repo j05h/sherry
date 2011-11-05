@@ -1,1 +1,5 @@
-%h4 Hi #{@user.name}
+%h4 Your links
+%ul
+- @user.links.each do |link|
+  %li
+    %a{:href => link.url} #{link.url}
