@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-
+    redirect_to users_path(cookies[:user]) if cookies[:user]
   end
 
   def create
@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    cookies[:user] = params[:id]
     @user = User.find_by_name params[:id]
   end
 end
