@@ -3,4 +3,4 @@
 %ul
   - @user.links.first(10).each do |link|
     %li
-      %a{:href => link.url} #{link.url.trim(25)}
+      %a{:href => link.url} #{link.url[0..50]}
